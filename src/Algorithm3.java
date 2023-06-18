@@ -29,19 +29,34 @@ import java.util.*;
 
 public class Algorithm3 {
     public static void main(String[] args) {
-        int n, input, i, max = 0;
+        int n, input, i, j, cnt = 0;
         Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
         List<Integer> list = new LinkedList<>();
         List<Integer> s_list = new LinkedList<>();
         for(i=0; i<n; i++) {
             input = sc.nextInt();
             list.add(input);
         }
+
         for(i=0; i<n; i++) {
-            if(list.get(i) > max) {
-                max = list.get(i);
-                s_list
+            System.out.print(list.get(i) + " ");
+        }
+        System.out.print("\n");
+
+        for(i=0; i<n; i++) {
+            for(j=0; j<n; j++) {
+                if(list.get(i) > list.get(j)) {
+                    cnt++;
+                }
+                s_list.add(i, cnt+1);
             }
+            cnt = 0;
+        }
+
+        for(i=0; i<n; i++) {
+            System.out.print(s_list.get(i));
+            System.out.print(" ");
         }
     }
 }
